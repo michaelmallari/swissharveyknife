@@ -5,13 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+var mainRoutes = require('./app_server/routes/main');
+
+if(process.env.NODE_ENV === 'production') {
+	url_base = 'http://swissharveyknife.herokuapp.com';
+} else {
+	url_base = 'http://localhost:3000';
+}
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server','views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -26,8 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/node_modules/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/', mainRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
