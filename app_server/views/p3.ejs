@@ -1,0 +1,26 @@
+<% include header.ejs %>
+		<nav class="vertical-middle">
+			<a href="/" class="next hover-animation">1</a>
+			<a href="/2" class="next hover-animation">2</a>
+			<a href="/3" class="next hover-animation active">3</a>
+		</nav>
+
+		<div id="mock-ipad-container" class="vertical-middle">
+			<div id="actual-screen">
+				<div id="status-bar"></div>
+				<div id="container-left">
+					<div id="mlbtv">
+						<video width="640" height="480" controls>
+							<source src="/videos/harvey_masked960.mp4" type="video/mp4">
+						</video>
+					</div>
+					<div id="sentiment-analysis"></div>
+				</div><div id="container-right" class="pull-right">
+					<div id="score-board-plays"></div>
+					<div id="stickers"></div>
+				</div>
+			</div>
+		</div>
+<!--/#page-container -->
+
+<% include footer.ejs %>
